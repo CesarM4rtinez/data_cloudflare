@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Campañas de Marketing</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      color: #333;
+    }
+    p {
+      max-width: 800px;
+      color: #555;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: #fff;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Campañas de Marketing</h1>
+  <p>
+    Una campaña de marketing es una serie de actividades estratégicas diseñadas para promover un producto, servicio o marca a un público específico. 
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Campaign Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Budget</th>
+        <th>ROI</th>
+        <th>Type</th>
+        <th>Target Audience</th>
+        <th>Channel</th>
+        <th>Conversion Rate</th>
+        <th>Revenue</th>
+      </tr>
+    </thead>
+    <tbody id="campaignsTableBody">
+      <!-- Los datos se llenarán dinámicamente con JavaScript -->
+    </tbody>
+  </table>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      try {
+        const response = await fetch(""); // Ajusta esta URL según tu configuración en Cloudflare D1
+        const data = await response.json();
+
+        const tbody = document.getElementById("campaignsTableBody");
+        tbody.innerHTML = ""; // Limpiar contenido existente
+
+        data.forEach(campaign => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${campaign.name}</td>
+            <td>${campaign.start_date}</td>
+            <td>${campaign.end_date}</td>
+            <td>${campaign.budget}</td>
+            <td>${campaign.roi}</td>
+            <td>${campaign.type}</td>
+            <td>${campaign.target_audience}</td>
+            <td>${campaign.channel}</td>
+            <td>${campaign.conversion_rate}</td>
+            <td>${campaign.revenue}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      } catch (error) {
+        console.error("Error al obtener los datos:", error);
+      }
+    });
+  </script>
+
+</body>
+</html>
