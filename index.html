@@ -65,7 +65,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", async () => {
       try {
-        const response = await fetch("https://deploy.workers.cloudflare.com/?url=https%3A%2F%2Fgithub.com%2FCesarM4rtinez%2Fdata_cloudflare"); // Ajusta esta URL según tu configuración en Cloudflare D1
+        const response = await fetch("https://api.cloudflare.com/client/v4/user/tokens/verify"); // Ajusta esta URL según tu configuración en Cloudflare D1
         const data = await response.json();
 
         const tbody = document.getElementById("campaignsTableBody");
